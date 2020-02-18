@@ -41,7 +41,10 @@ class DeviceInfoPlugin {
 ///
 /// See: https://developer.android.com/reference/android/os/Build.html
 class AndroidDeviceInfo {
-  AndroidDeviceInfo._({
+  /// Information derived from `android.os.Build`.
+  ///
+  /// See: https://developer.android.com/reference/android/os/Build.html
+  AndroidDeviceInfo({
     this.version,
     this.board,
     this.bootloader,
@@ -128,7 +131,7 @@ class AndroidDeviceInfo {
 
   /// Deserializes from the message received from [_kChannel].
   static AndroidDeviceInfo _fromMap(Map<String, dynamic> map) {
-    return AndroidDeviceInfo._(
+    return AndroidDeviceInfo(
       version:
           AndroidBuildVersion._fromMap(map['version']?.cast<String, dynamic>()),
       board: map['board'],
@@ -165,7 +168,11 @@ class AndroidDeviceInfo {
 ///
 /// See: https://developer.android.com/reference/android/os/Build.VERSION.html
 class AndroidBuildVersion {
-  AndroidBuildVersion._({
+  /// Version values of the current Android operating system build derived from
+  /// `android.os.Build.VERSION`.
+  ///
+  /// See: https://developer.android.com/reference/android/os/Build.VERSION.html
+  AndroidBuildVersion({
     this.baseOS,
     this.codename,
     this.incremental,
@@ -200,7 +207,7 @@ class AndroidBuildVersion {
 
   /// Deserializes from the map message received from [_kChannel].
   static AndroidBuildVersion _fromMap(Map<String, dynamic> map) {
-    return AndroidBuildVersion._(
+    return AndroidBuildVersion(
       baseOS: map['baseOS'],
       codename: map['codename'],
       incremental: map['incremental'],
@@ -216,7 +223,10 @@ class AndroidBuildVersion {
 ///
 /// See: https://developer.apple.com/documentation/uikit/uidevice
 class IosDeviceInfo {
-  IosDeviceInfo._({
+  /// Information derived from `UIDevice`.
+  ///
+  /// See: https://developer.apple.com/documentation/uikit/uidevice
+  IosDeviceInfo({
     this.name,
     this.systemName,
     this.systemVersion,
@@ -253,7 +263,7 @@ class IosDeviceInfo {
 
   /// Deserializes from the map message received from [_kChannel].
   static IosDeviceInfo _fromMap(Map<String, dynamic> map) {
-    return IosDeviceInfo._(
+    return IosDeviceInfo(
       name: map['name'],
       systemName: map['systemName'],
       systemVersion: map['systemVersion'],
@@ -267,9 +277,13 @@ class IosDeviceInfo {
 }
 
 /// Information derived from `utsname`.
+///
 /// See http://pubs.opengroup.org/onlinepubs/7908799/xsh/sysutsname.h.html for details.
 class IosUtsname {
-  IosUtsname._({
+  /// Information derived from `utsname`.
+  ///
+  /// See http://pubs.opengroup.org/onlinepubs/7908799/xsh/sysutsname.h.html for details.
+  IosUtsname({
     this.sysname,
     this.nodename,
     this.release,
@@ -294,7 +308,7 @@ class IosUtsname {
 
   /// Deserializes from the map message received from [_kChannel].
   static IosUtsname _fromMap(Map<String, dynamic> map) {
-    return IosUtsname._(
+    return IosUtsname(
       sysname: map['sysname'],
       nodename: map['nodename'],
       release: map['release'],
